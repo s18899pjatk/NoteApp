@@ -4,9 +4,16 @@ import { Link } from "react-router-dom";
 
 import NotesBlock from "../components/NotesBlock";
 import { getNotes, deleteNote } from "../services/note";
+import Select from "../components/Select";
+import _ from "lodash";
 
 function Notes() {
   const [notes, setNotes] = useState();
+  const options = [
+    { _id: 1, name: "title" },
+    { _id: 2, name: "created" },
+    { _id: 3, name: "modified" },
+  ];
 
   useEffect(() => {
     retrieveNotes();
@@ -33,11 +40,24 @@ function Notes() {
     }
   };
 
+  const handleSort = (option) => {
+    const sorted = _.orderBy(notes, option, "asc");
+    setNotes(sorted);
+  };
+
   return (
     <div>
       <main className="cardBox">
         <div className="row" style={{ width: "100%" }}>
           <div className="col-2">
+            <div style={{ marginBottom: "50px", color: "white" }}>
+              <Select
+                name="Sort"
+                label="Sort By"
+                options={options}
+                onChange={handleSort}
+              />
+            </div>
             <Link className="btn btn-dark" to="/notes/new">
               Create note
             </Link>

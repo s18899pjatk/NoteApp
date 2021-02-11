@@ -24,6 +24,11 @@
   padding: 50px;
 }
 
+.historyTable {
+  margin-top: 15px;
+  color: rgb(255, 255, 255);
+}
+
 .noteForm {
   margin: 50px;
   height: 100vh;
