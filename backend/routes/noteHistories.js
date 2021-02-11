@@ -9,12 +9,14 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", validateId, async (req, res) => {
-  const notehist = await NoteHistory.findById(req.params.id).select("-__v");
+  const notehist = await NoteHistory.findOne({ noteId: req.params.id }).select(
+    "-__v"
+  );
 
   if (!notehist)
     return res
       .status(404)
-      .send("The note history with the given ID was not found.");
+      .send("The note history with the given Note ID was not found.");
 
   res.send(notehist);
 });

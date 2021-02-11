@@ -7,39 +7,12 @@ const db = config.get("db");
 
 const notes = [
   {
-    title: "Products",
-    content: "mushroms, potatos,bananas",
-    version: 1.1,
-    history: [
-      {
-        title: "Products",
-        content: "mushroms, potatos and smth else",
-        version: 1.0,
-      },
-    ],
-  },
-  {
-    title: "Reminder",
-    content: "8:00 dentist apointment",
-    version: 1.0,
-    history: null,
-  },
-  {
-    title: "Technologies",
+    title: "Languages",
     content: "html,css,js",
-    version: 1.2,
-    history: [
-      {
-        title: "Technologies",
-        content: "html,css",
-        version: 1.1,
-      },
-      {
-        title: "Technologies",
-        content: "html",
-        version: 1.0,
-      },
-    ],
+  },
+  {
+    title: "Users",
+    content: "1,2,3",
   },
 ];
 
@@ -60,11 +33,10 @@ async function seed() {
     const { _id: noteId } = await new Note({
       title: note.title,
       content: note.content,
-      version: note.version,
     }).save();
     await new NoteHistory({
       noteId,
-      notes: note.history,
+      notes: [],
     }).save();
   }
 
