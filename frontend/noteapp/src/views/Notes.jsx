@@ -41,7 +41,8 @@ function Notes() {
   };
 
   const handleSort = (option) => {
-    const sorted = _.orderBy(notes, option, "asc");
+    const order = option === "title" ? "asc" : "desc";
+    const sorted = _.orderBy(notes, option, order);
     setNotes(sorted);
   };
 

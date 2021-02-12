@@ -2,7 +2,6 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const VersionTable = ({ versions }) => {
-  const count = 0;
   return (
     <Table striped bordered hover variant="dark">
       <thead>

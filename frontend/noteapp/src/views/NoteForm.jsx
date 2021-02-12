@@ -11,8 +11,8 @@ class NoteForm extends Form {
 
   schema = {
     _id: Joi.string(),
-    title: Joi.string().required().min(2).label("Title"),
-    content: Joi.string().required().label("Content"),
+    title: Joi.string().trim().required().min(1).max(20).label("Title"),
+    content: Joi.string().trim().required().min(1).max(255).label("Content"),
   };
 
   async populateNotes() {

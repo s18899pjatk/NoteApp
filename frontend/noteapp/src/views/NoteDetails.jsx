@@ -37,14 +37,18 @@ function NoteDetails() {
   };
 
   return (
-    <div className="cardBox">
-      {note && <Note key={note._id} item={note} isDetailed={true} />}
-      {versions && (
-        <div className="historyTable">
-          <h1>History</h1>
-          <VersionTable versions={versions} />
+    <div className="container" style={{ height: "100vh", marginTop: "50px" }}>
+      <div className="row align-items-center">
+        <div className="col">
+          {note && <Note key={note._id} item={note} isDetailed={true} />}
+          {versions && (
+            <div className="historyTable">
+              <h1>History</h1>
+              <VersionTable versions={versions} />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
