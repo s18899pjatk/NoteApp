@@ -95,7 +95,7 @@ router.delete("/:id", validateId, async (req, res) => {
 function validate(note) {
   const schema = {
     title: Joi.string().min(1).max(20).required(),
-    content: Joi.string().min(1).max(20).required(),
+    content: Joi.string().min(1).max(255).required(),
   };
 
   return Joi.validate(note, schema);
